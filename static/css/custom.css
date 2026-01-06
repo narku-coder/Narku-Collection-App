@@ -1,0 +1,585 @@
+/* Base typography and layout */
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+               "Segoe UI", sans-serif;
+    background-color: transparent;
+}
+
+/* BRAND COLORS (centered around dark blue, grey, bright blue) */
+:root {
+  --brand-bg-dark: #021b33;
+  --brand-bg-dark-alt: #071f3d;
+  --brand-accent: #27a3ff;
+  --brand-accent-soft: #123a63;
+  --brand-card-dark: #0b2644;
+  --brand-text-muted: #9fb2c7;
+}
+
+:root[data-bs-theme="light"] {
+  --brand-bg-light: #f4f6fb;
+  --brand-card-light: #ffffff;
+  --brand-border-light: #dde3ee;
+}
+
+/* HEADER / NAV */
+.app-header .navbar {
+  background: linear-gradient(90deg, #020f24, #041c3a);
+}
+
+.app-header .navbar-brand {
+  color: #ffffff;
+}
+
+.app-header .navbar-brand .brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: var(--brand-accent);
+  color: #020c1a;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.app-header .nav-link {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.9rem;
+}
+
+.app-header .nav-link:hover,
+.app-header .nav-link:focus {
+  color: #ffffff;
+}
+
+.theme-toggle .form-check-input {
+  cursor: pointer;
+}
+
+/* Search in navbar */
+.nav-search {
+  position: relative;
+  width: 220px;
+}
+
+.nav-search-input {
+  padding-left: 1.75rem;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: transparent;
+  color: #ffffff;
+}
+
+.nav-search-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.nav-search-input:focus {
+  background-color: rgba(255, 255, 255, 0.12);
+  border-color: var(--brand-accent);
+  box-shadow: 0 0 0 1px var(--brand-accent);
+}
+
+.nav-search-icon {
+  position: absolute;
+  left: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* HERO SECTION (dark default) */
+.hero-section {
+  background: radial-gradient(circle at top left, #113a68 0, #020f24 40%, #020818 100%);
+  color: #ffffff;
+  padding: 3.5rem 0 3rem;
+}
+
+.hero-inner {
+  max-width: 1120px;
+}
+
+.hero-kicker {
+  letter-spacing: 0.12em;
+  color: var(--brand-text-muted);
+}
+
+.hero-title {
+  font-size: clamp(2rem, 2.6vw, 2.6rem);
+  font-weight: 650;
+}
+
+.hero-subtitle {
+  color: var(--brand-text-muted);
+  max-width: 32rem;
+}
+
+/* HERO PANEL (right card) */
+.hero-panel {
+  background: rgba(3, 23, 48, 0.85);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(143, 178, 214, 0.3);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(12px);
+}
+
+.metric-card {
+  border-radius: 0.9rem;
+  padding: 0.9rem 1rem;
+  background: linear-gradient(135deg, var(--brand-card-dark), #05182c);
+  border: 1px solid rgba(39, 163, 255, 0.4);
+}
+
+.metric-label {
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  color: var(--brand-text-muted);
+  margin-bottom: 0.15rem;
+}
+
+.metric-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.metric-sub {
+  color: var(--brand-text-muted);
+}
+
+.hero-panel-footer {
+  color: var(--brand-text-muted);
+}
+
+/* SECTION CARDS BELOW HERO */
+.section-cards {
+  background-color: #020816;
+}
+
+.section-cards .container {
+  max-width: 1120px;
+}
+
+.info-card {
+  border-radius: 1rem;
+  padding: 1.5rem;
+  background: linear-gradient(145deg, #061528, #020f24);
+  border: 1px solid rgba(53, 116, 184, 0.6);
+  color: #e5edf8;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
+}
+
+.info-label {
+  color: var(--brand-text-muted);
+}
+
+.info-body {
+  color: #d3e1f3;
+}
+
+.info-list {
+  padding-left: 1.1rem;
+}
+
+/* FOOTER */
+.app-footer {
+  background-color: #010811;
+  color: var(--brand-text-muted);
+}
+
+/* BUTTON TWEAKS */
+.btn-primary {
+  background-color: var(--brand-accent);
+  border-color: var(--brand-accent);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #1b83d0;
+  border-color: #1b83d0;
+}
+
+.btn-outline-primary {
+  color: var(--brand-accent);
+  border-color: var(--brand-accent);
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+  background-color: var(--brand-accent);
+  color: #020c1a;
+}
+
+/* LIGHT THEME OVERRIDES */
+:root[data-bs-theme="light"] body {
+  background-color: var(--brand-bg-light);
+}
+
+:root[data-bs-theme="light"] .hero-section {
+  background: linear-gradient(135deg, #ffffff, #eaf0fb);
+  color: #020b1a;
+}
+
+:root[data-bs-theme="light"] .hero-panel {
+  background: var(--brand-card-light);
+  border-color: var(--brand-border-light);
+  box-shadow: 0 10px 26px rgba(15, 33, 73, 0.15);
+}
+
+:root[data-bs-theme="light"] .metric-card {
+  background: linear-gradient(135deg, #ffffff, #f4f6fd);
+  border-color: rgba(39, 163, 255, 0.4);
+}
+
+:root[data-bs-theme="light"] .section-cards {
+  background-color: var(--brand-bg-light);
+}
+
+:root[data-bs-theme="light"] .info-card {
+  background: var(--brand-card-light);
+  border-color: var(--brand-border-light);
+  color: #12233a;
+  box-shadow: 0 8px 24px rgba(23, 37, 83, 0.12);
+}
+
+:root[data-bs-theme="light"] .info-body {
+  color: #364868;
+}
+
+:root[data-bs-theme="light"] .app-footer {
+  background-color: #ffffff;
+  color: #6b7792;
+}
+
+/* Responsive tweaks */
+@media (max-width: 767.98px) {
+  .hero-section {
+    padding-top: 2.4rem;
+    padding-bottom: 2.4rem;
+  }
+}
+
+/* FORM WRAPPER – background similar to gradient contact form */
+.form-wrapper {
+  min-height: calc(100vh - 140px); /* header + footer approx */
+  display: flex;
+  align-items: center;
+  padding: 3rem 0;
+  background: radial-gradient(circle at top left, #163f76 0, #020f24 45%, #020816 100%);
+}
+
+:root[data-bs-theme="light"] .form-wrapper {
+  background: linear-gradient(135deg, #f2f5ff, #dde6fa);
+}
+
+/* FORM CARD */
+.form-container {
+  max-width: 960px;
+}
+
+.form-card {
+  border-radius: 1.2rem;
+  padding: 2.2rem 2.3rem;
+  background: linear-gradient(135deg, rgba(5, 22, 46, 0.96), rgba(7, 37, 75, 0.98));
+  border: 1px solid rgba(102, 170, 230, 0.5);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75);
+  color: #e9f1ff;
+}
+
+:root[data-bs-theme="light"] .form-card {
+  background: var(--brand-card-light);
+  border-color: var(--brand-border-light);
+  box-shadow: 0 18px 48px rgba(29, 52, 102, 0.2);
+  color: #122542;
+}
+
+/* FORM HEADER */
+.form-card-header {
+  margin-bottom: 1.75rem;
+}
+
+.form-title {
+  font-size: 1.6rem;
+  font-weight: 650;
+  margin-bottom: 0.5rem;
+}
+
+.form-subtitle {
+  font-size: 0.95rem;
+  color: var(--brand-text-muted);
+}
+
+/* INPUTS */
+.form-input {
+  background-color: rgba(4, 26, 52, 0.9);
+  border-radius: 0.75rem;
+  border: 1px solid rgba(102, 170, 230, 0.6);
+  color: #ecf3ff;
+  padding: 0.7rem 0.9rem;
+  font-size: 0.95rem;
+}
+
+.form-input::placeholder {
+  color: rgba(195, 215, 239, 0.7);
+}
+
+.form-input:focus {
+  background-color: rgba(8, 30, 60, 0.98);
+  border-color: var(--brand-accent);
+  box-shadow: 0 0 0 1px var(--brand-accent);
+  color: #ffffff;
+}
+
+.form-label-lg {
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.35rem;
+}
+
+/* Light theme overrides for inputs */
+:root[data-bs-theme="light"] .form-input {
+  background-color: #f8f9ff;
+  border-color: var(--brand-border-light);
+  color: #182741;
+}
+
+:root[data-bs-theme="light"] .form-input::placeholder {
+  color: #8a97b4;
+}
+
+/* BUTTONS styled more like Colorlib contact form CTA */
+.btn-form-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.5rem;
+  border-radius: 999px;
+  border: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  background: linear-gradient(135deg, #25a5ff, #38d1ff);
+  color: #04111f;
+  box-shadow: 0 10px 30px rgba(48, 184, 255, 0.45);
+}
+
+.btn-form-primary:hover,
+.btn-form-primary:focus {
+  background: linear-gradient(135deg, #1c86d2, #2db7ec);
+  color: #020810;
+}
+
+.btn-form-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  border: 1px solid rgba(147, 184, 228, 0.7);
+  font-size: 0.9rem;
+  color: #d1e0ff;
+  background: transparent;
+}
+
+.btn-form-secondary:hover,
+.btn-form-secondary:focus {
+  background: rgba(8, 37, 73, 0.8);
+  color: #ffffff;
+}
+
+/* Light theme button tweaks */
+:root[data-bs-theme="light"] .btn-form-secondary {
+  color: #31405b;
+  border-color: #c2cde1;
+}
+
+:root[data-bs-theme="light"] .btn-form-secondary:hover,
+:root[data-bs-theme="light"] .btn-form-secondary:focus {
+  background-color: #e4ebfb;
+}
+
+/* Responsive spacing */
+@media (max-width: 767.98px) {
+  .form-card {
+    padding: 1.7rem 1.4rem;
+  }
+}
+
+/* TABLE SECTION BACKGROUND (similar to Colorlib table page) */
+.table-section {
+  min-height: calc(100vh - 120px); /* header + footer approx */
+  padding: 3rem 0;
+  background: linear-gradient(180deg, #3aa8ff 0%, #163d79 45%, #041329 100%);
+}
+
+:root[data-bs-theme="light"] .table-section {
+  background: linear-gradient(180deg, #f2f7ff 0%, #d1e3ff 45%, #f4f6fb 100%);
+  padding: 3rem 0;
+}
+
+/* TABLE CARD WRAPPER */
+.table-container {
+  max-width: 1120px;
+}
+
+.table-card {
+  background-color: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+
+:root[data-bs-theme="dark"] .table-card {
+  background-color: #07182b;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.7);
+}
+
+/* TABLE CARD HEADER */
+.table-card-header {
+  padding: 1.5rem 1.75rem 1.25rem;
+  border-bottom: 1px solid rgba(223, 230, 244, 0.9);
+}
+
+:root[data-bs-theme="dark"] .table-card-header {
+  border-bottom-color: rgba(37, 63, 104, 0.8);
+}
+
+.table-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.1rem;
+}
+
+:root[data-bs-theme="dark"] .table-title {
+  color: #f0f4ff;
+}
+
+.table-subtitle {
+  font-size: 0.9rem;
+  color: #7b86a0;
+  margin-bottom: 0;
+}
+
+:root[data-bs-theme="dark"] .table-subtitle {
+  color: #a5b4cf;
+}
+
+/* SEARCH + ACTIONS */
+.table-search-form {
+  align-items: center;
+}
+
+.table-search-input-wrap {
+  min-width: 180px;
+}
+
+.table-search-input {
+  border-radius: 999px;
+  font-size: 0.9rem;
+}
+
+.table-add-btn {
+  border-radius: 999px;
+  font-size: 0.9rem;
+}
+
+.table-search-btn {
+  border-radius: 999px;
+  font-size: 0.8rem;
+}
+
+/* TABLE STYLE – Colorlib‑like */
+.custom-table-responsive {
+  padding: 1rem 1.75rem 1.5rem;
+}
+
+.custom-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+}
+
+.custom-table thead tr {
+  background-color: #222845;
+}
+
+.custom-table thead th {
+  border: none;
+  color: black;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.85rem 0.75rem;
+  white-space: nowrap;
+  background-color: white;
+}
+
+:root[data-bs-theme="light"] .custom-table thead th {
+  background-color: black;
+  color: white;
+}
+
+:root[data-bs-theme="light"] .custom-table thead tr {
+  background-color: #2d3a63;
+}
+
+/* First and last header cell radius */
+.custom-table thead th:first-child {
+  border-top-left-radius: 0.75rem;
+}
+
+.custom-table thead th:last-child {
+  border-top-right-radius: 0.75rem;
+}
+
+.custom-table tbody tr {
+  background-color: #dbe9ff;
+}
+
+:root[data-bs-theme="dark"] .custom-table tbody tr {
+  background-color: #2b2140;
+}
+
+.custom-table tbody tr:nth-child(even) {
+  background-color: #aac4ff;
+}
+
+:root[data-bs-theme="dark"] .custom-table tbody tr:nth-child(even) {
+  background-color: #3a2959;
+}
+
+.custom-table tbody td {
+  border-top: 1px solid #edf0f7;
+  font-size: 0.9rem;
+  padding: 0.75rem 0.75rem;
+}
+
+:root[data-bs-theme="dark"] .custom-table tbody td {
+  border-top-color: #102844;
+  color: #dde6f7;
+}
+
+/* Hover effect like modern Colorlib tables */
+.custom-table tbody tr:hover {
+  background-color: #c0d6ff;
+}
+
+:root[data-bs-theme="dark"] .custom-table tbody tr:hover {
+  background-color: #4b3472;
+}
+
+.custom-table tbody td,
+.custom-table tbody th {
+  background-color: transparent !important;
+}
+/* Make table scroll smoothly on small screens */
+@media (max-width: 767.98px) {
+  .custom-table-responsive {
+    padding-inline: 1rem;
+  }
+
+  .custom-table thead th,
+  .custom-table tbody td {
+    white-space: nowrap;
+  }
+}

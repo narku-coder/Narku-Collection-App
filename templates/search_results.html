@@ -1,0 +1,167 @@
+{% extends "base.html" %}
+{% block title %}Search · Narku's Collection Hub{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-3">
+    <div>
+      <h1 class="h4 mb-1">Search results</h1>
+      {% if q %}
+      <p class="text-muted small mb-0">
+        Showing matches for "<span class="fw-semibold">{{ q }}</span>"
+        in
+        {% if scope == 'all' %}
+          all tables.
+        {% elif scope == 'books' %}
+          Books.
+        {% elif scope == 'cds' %}
+          Cds.
+        {% elif scope == 'board games' %}
+          Board Games
+        {% elif scope == 'video games' %}
+          Video Games.
+        {% endif %}
+      </p>
+      {% else %}
+      <p class="text-muted small mb-0">
+        Enter a term in the search box to search across tables.
+      </p>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if q %}
+  <div class="row g-4">
+    {% if scope in ('all', 'books') %}
+    <div class="col-12">
+      <h2 class="h6 text-uppercase text-muted mb-2">books</h2>
+      <div class="table-responsive shadow-sm rounded-3">
+        <table class="table table-hover align-middle mb-0">
+          <thead class="table-light">
+            <tr>
+              <th scope="col" class="text-nowrap">ID</th>
+              <th scope="col">Title</th>
+              <th scope="col" class="text-nowrap">Author</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for b in books %}
+            <tr>
+              <td class="text-muted">{{ b.book_id }}</td>
+              <td>{{ b.title }}</td>
+              <td class="text-nowrap">
+                {% if b.author is not none %}
+                  {{ b.author}}
+                {% endif %}
+              </td>
+            </tr>
+          {% else %}
+            <tr>
+              <td colspan="3" class="text-center text-muted py-3">
+                No matching books found.
+              </td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    {% endif %}
+
+    {% if scope in ('all', 'cds') %}
+    <div class="col-12">
+      <h2 class="h6 text-uppercase text-muted mb-2">cds</h2>
+      <div class="table-responsive shadow-sm rounded-3">
+        <table class="table table-hover align-middle mb-0">
+          <thead class="table-light">
+            <tr>
+              <th scope="col" class="text-nowrap">ID</th>
+              <th scope="col">Title</th>
+              <th scope="col">Artist</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for c in cds %}
+            <tr>
+              <td class="text-muted">{{ c.cd_id }}</td>
+              <td>{{ c.title }}</td>
+              <td>{{ c.artist }}</td>
+            </tr>
+          {% else %}
+            <tr>
+              <td colspan="3" class="text-center text-muted py-3">
+                No matching cds found.
+              </td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    {% if scope in ('all', 'board_games') %}
+    <div class="col-12">
+      <h2 class="h6 text-uppercase text-muted mb-2">board games</h2>
+      <div class="table-responsive shadow-sm rounded-3">
+        <table class="table table-hover align-middle mb-0">
+          <thead class="table-light">
+            <tr>
+              <th scope="col" class="text-nowrap">ID</th>
+              <th scope="col">Title</th>
+              <th scope="col">Company</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for b in board_games %}
+            <tr>
+              <td class="text-muted">{{ b.board_game_id }}</td>
+              <td>{{ b.title }}</td>
+              <td>{{ b.company }}</td>
+            </tr>
+          {% else %}
+            <tr>
+              <td colspan="3" class="text-center text-muted py-3">
+                No matching board games found.
+              </td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    {% if scope in ('all', 'video_games') %}
+    <div class="col-12">
+      <h2 class="h6 text-uppercase text-muted mb-2">video games</h2>
+      <div class="table-responsive shadow-sm rounded-3">
+        <table class="table table-hover align-middle mb-0">
+          <thead class="table-light">
+            <tr>
+              <th scope="col" class="text-nowrap">ID</th>
+              <th scope="col">Title</th>
+              <th scope="col">Developer</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for v in video_games %}
+            <tr>
+              <td class="text-muted">{{ v.game_id }}</td>
+              <td>{{ v.title }}</td>
+              <td>{{ v.developer }}</td>
+            </tr>
+          {% else %}
+            <tr>
+              <td colspan="3" class="text-center text-muted py-3">
+                No matching video games found.
+              </td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

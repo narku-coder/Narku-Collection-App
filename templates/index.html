@@ -1,0 +1,167 @@
+{% extends "base.html" %}
+{% block title %}Home · AI Data Hub{% endblock %}
+
+{% block content %}
+<section class="hero-section">
+  <div class="container hero-inner">
+    <div class="row align-items-center g-4">
+      <div class="col-12 col-lg-6">
+        <p class="hero-kicker text-uppercase small mb-2">Internal dashboard</p>
+        <h1 class="hero-title mb-3">
+          Keep track of various pieces of media in collection
+        </h1>
+        <p class="hero-subtitle mb-4">
+          A single, centralized hub to explore key database tables,
+          monitor usage, and act on the most important changes in real time.
+        </p>
+        <div class="d-flex flex-wrap gap-2">
+          <a href="{{ url_for('books_list') }}" class="btn btn-primary btn-lg">
+            Open books
+          </a>
+          <a href="{{ url_for('cds_list') }}" class="btn btn-outline-light btn-lg">
+            View cds
+          </a>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-5 ms-lg-auto">
+        <div class="hero-panel">
+          <h2 class="h6 text-uppercase mb-3">Today’s snapshot</h2>
+          <div class="row g-3">
+            <div class="col-6">
+              <div class="metric-card">
+                <p class="metric-label">books</p>
+                <p class="metric-value">{{ books_count }}</p>
+                <p class="metric-sub small">Total number of books</p>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="metric-card">
+                <p class="metric-label">cds</p>
+                <p class="metric-value">{{ cds_count }}</p>
+                <p class="metric-sub small">Total number of cds</p>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="metric-card">
+                <p class="metric-label">board games</p>
+                <p class="metric-value">{{ board_games_count }}</p>
+                <p class="metric-sub small">Total number of board games</p>
+              </div>
+            </div>
+             <div class="col-6">
+              <div class="metric-card">
+                <p class="metric-label">video games</p>
+                <p class="metric-value">{{ video_games_count }}</p>
+                <p class="metric-sub small">Total number of video games</p>
+              </div>
+            </div>
+          </div>
+          <div class="hero-panel-footer small mt-3">
+            Data refreshed when the page loads. Add or edit records from the sections below.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-cards py-5">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-12 col-lg-4">
+        <div class="info-card">
+          <p class="info-label text-uppercase small">Book Data</p>
+          <h2 class="h5 mb-2">books records</h2>
+          <p class="info-body mb-3">
+            Browse the full book catalog, run quick searches, and
+            identify items that matter most to the business.
+          </p>
+          <div class="d-flex flex-wrap gap-2">
+            <a href="{{ url_for('books_list') }}" class="btn btn-outline-primary btn-sm">
+              View table
+            </a>
+            <a href="{{ url_for('books_add') }}" class="btn btn-link btn-sm p-0">
+              + Add book
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-4">
+        <div class="info-card">
+          <p class="info-label text-uppercase small">Cd data</p>
+          <h2 class="h5 mb-2">cd records</h2>
+          <p class="info-body mb-3">
+            Maintain accurate cd details and keep all stakeholders
+            aligned on the latest information.
+          </p>
+          <div class="d-flex flex-wrap gap-2">
+            <a href="{{ url_for('cds_list') }}" class="btn btn-outline-primary btn-sm">
+              View table
+            </a>
+            <a href="{{ url_for('cds_add') }}" class="btn btn-link btn-sm p-0">
+              + Add cd
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-4">
+        <div class="info-card">
+          <p class="info-label text-uppercase small">Board Game Data</p>
+          <h2 class="h5 mb-2">board games record</h2>
+          <p class="info-body mb-3">
+            Browse the full board game catalog, run quick searches
+          </p>
+          <div class="d-flex flex-wrap gap-2">
+            <a href="{{ url_for('board_games_list') }}" class="btn btn-outline-primary btn-sm">
+              View table
+            </a>
+            <a href="{{ url_for('board_games_add') }}" class="btn btn-link btn-sm p-0">
+              + Add board games
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-4">
+        <div class="info-card">
+          <p class="info-label text-uppercase small">Video Game data</p>
+          <h2 class="h5 mb-2">video games records</h2>
+          <p class="info-body mb-3">
+            Browse the full video game catalog, run quick searches
+          </p>
+          <div class="d-flex flex-wrap gap-2">
+            <a href="{{ url_for('video_games_list') }}" class="btn btn-outline-primary btn-sm">
+              View table
+            </a>
+            <a href="{{ url_for('video_games_add') }}" class="btn btn-link btn-sm p-0">
+              + Add video games
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-4">
+        <div class="info-card">
+          <p class="info-label text-uppercase small">Guidance</p>
+          <h2 class="h5 mb-2">Smart suggestions</h2>
+          <p class="info-body mb-3">
+            Surface suggested views, filters, and checks that keep your
+            internal data communication clear and consistent.
+          </p>
+          <ul class="info-list small mb-3">
+            <li>Highlight recently added or updated records.</li>
+            <li>Spot missing key fields like email addresses.</li>
+            <li>Prepare exports for stakeholder updates.</li>
+          </ul>
+          <button class="btn btn-outline-secondary btn-sm" type="button" disabled>
+            Coming soon
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

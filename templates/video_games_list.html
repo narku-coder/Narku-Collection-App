@@ -1,0 +1,50 @@
+{% block content %}
+<div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-3">
+  <div>
+    <h1 class="h3 mb-1">Cds</h1>
+    <p class="text-muted small mb-0">
+      Browse and search all video games in the database.
+    </p>
+  </div>
+  <a href="{{ url_for('video_games_add') }}" class="btn btn-primary">
+    + Add book
+  </a>
+</div>
+
+<form class="row g-2 mb-3" method="get">
+  <div class="col-12 col-md-6 col-lg-4">
+    <input type="text" name="q" class="form-control"
+           placeholder="Search by title" value="{{ q }}">
+  </div>
+  <div class="col-auto">
+    <button class="btn btn-outline-secondary" type="submit">Search</button>
+  </div>
+</form>
+
+<div class="table-responsive shadow-sm rounded-3">
+  <table class="table table-hover align-middle mb-0">
+    <thead class="table-light">
+      <tr>
+        <th scope="col" class="text-nowrap">ID</th>
+        <th scope="col">Title</th>
+        <th scope="col" class="text-nowrap">Developer</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for v in video games %}
+      <tr>
+        <td class="text-muted">{{ v.game_id }}</td>
+        <td>{{ v.title }}</td>
+        <td class="text-nowrap">{{ v.developer}}</td>
+      </tr>
+    {% else %}
+      <tr>
+        <td colspan="3" class="text-center text-muted py-4">
+          No video games found. Try a different search or add a new video game.
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

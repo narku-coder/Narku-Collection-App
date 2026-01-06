@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Add cd · Narku's Collection Console{% endblock %}
+
+{% block content %}
+<h1 class="h3 mb-3">Add cd</h1>
+<p class="text-muted small mb-4">
+  Create a new cd record in the database.
+</p>
+
+<form method="post" class="row g-3 col-12 col-md-8 col-lg-6">
+  <div class="col-12">
+    <label class="form-label">Title</label>
+    <input type="text" name="title" class="form-control" required>
+  </div>
+  <div class="col-12">
+    <label class="form-label">Artist</label>
+    <input type="text" name="artist" class="form-control" required>
+  </div>
+  <div class="col-12">
+    <label class="form-label">Year Released</label>
+    <input type="number" name="year_released" class="form-control" min="1" max="2025" required>
+  </div>
+  <div class="col-12">
+    <label class="form-label">Label</label>
+    <input type="text" name="label" class="form-control" required>
+  </div>
+  <div class="col-12 d-flex gap-2">
+    <button class="btn btn-primary" type="submit">Save</button>
+    <a class="btn btn-outline-secondary" href="{{ url_for('cds_list') }}">Cancel</a>
+  </div>
+</form>
+{% endblock %}
