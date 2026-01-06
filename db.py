@@ -3,9 +3,10 @@ from mysql.connector import Error
 
 def get_connection():
     return mysql.connector.connect(
-        host="localhost",
-        user="NarkuUser",
-        password="V0113yb@11ru135",
-        database="Collection",
+        host="sql3.freesqldatabase.com",
+        user="sql3813577",
+        password="wbRMbUuL7A",
+        database="sql3813577",
         autocommit=True
+
     )
