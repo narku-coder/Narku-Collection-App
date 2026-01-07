@@ -1,13 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Video Games · Narku's Collection Console{% endblock %}
+  
 {% block content %}
 <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-3">
   <div>
-    <h1 class="h3 mb-1">Cds</h1>
+    <h1 class="h3 mb-1">Video games</h1>
     <p class="text-muted small mb-0">
       Browse and search all video games in the database.
     </p>
   </div>
   <a href="{{ url_for('video_games_add') }}" class="btn btn-primary">
-    + Add book
+    + Add video games
   </a>
 </div>
 
@@ -28,18 +31,20 @@
         <th scope="col" class="text-nowrap">ID</th>
         <th scope="col">Title</th>
         <th scope="col" class="text-nowrap">Developer</th>
+        <th scope="col" class="text-nowrap">Console</th>
       </tr>
     </thead>
     <tbody>
-    {% for v in video games %}
+    {% for v in videogames %}
       <tr>
         <td class="text-muted">{{ v.game_id }}</td>
         <td>{{ v.title }}</td>
         <td class="text-nowrap">{{ v.developer}}</td>
+        <td class="text-nowrap">{{ v.console}}</td>
       </tr>
     {% else %}
       <tr>
-        <td colspan="3" class="text-center text-muted py-4">
+        <td colspan="4" class="text-center text-muted py-4">
           No video games found. Try a different search or add a new video game.
         </td>
       </tr>

@@ -1,16 +1,16 @@
 {% extends "base.html" %}
-{% block title %}Cds · Narku's Collection Console{% endblock %}
+{% block title %}Board Games · Narku's Collection Console{% endblock %}
 
 {% block content %}
 <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-3">
   <div>
-    <h1 class="h3 mb-1">Cds</h1>
+    <h1 class="h3 mb-1">Board Games</h1>
     <p class="text-muted small mb-0">
       Browse and search all board games in the database.
     </p>
   </div>
   <a href="{{ url_for('board_games_add') }}" class="btn btn-primary">
-    + Add book
+    + Add board games
   </a>
 </div>
 
@@ -34,7 +34,7 @@
       </tr>
     </thead>
     <tbody>
-    {% for b in board games %}
+    {% for b in boardgames %}
       <tr>
         <td class="text-muted">{{ b.board_game_id }}</td>
         <td>{{ b.title }}</td>
