@@ -207,12 +207,12 @@ def global_search():
         )
 
     conn = get_connection()
-    cur = conn.cursor(dictionary=True)
+    cur = conn.cursor(dictionary=True, buffered=True)
 
     # Search books only or as part of "all"
     if scope in ("all", "books"):
         cur.execute(
-            "SELECT book_id, title, author FROM books WHERE title LIKE %s",
+            "SELECT book_id, title, author FROM booktable WHERE title LIKE %s",
             (f"%{q}%",)
         )
         books = cur.fetchall()
