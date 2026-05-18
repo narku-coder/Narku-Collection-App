@@ -50,7 +50,7 @@ def books_list():
     cur = conn.cursor(dictionary=True)
     if q:
         cur.execute(
-            "SELECT * FROM booktable WHERE {field} LIKE %s",
+            f"SELECT * FROM booktable WHERE {field} LIKE %s",
             (f"%{q}%",)
         )
     else:
@@ -97,7 +97,7 @@ def cds_list():
     cur = conn.cursor(dictionary=True)
     if q:
         cur.execute(
-            "SELECT * FROM cdtable WHERE {field} LIKE %s",
+            f"SELECT * FROM cdtable WHERE {field} LIKE %s",
             (f"%{q}%",)
         )
     else:
@@ -145,7 +145,7 @@ def board_games_list():
     cur = conn.cursor(dictionary=True)
     if q:
         cur.execute(
-            "SELECT * FROM boardgames WHERE {field} LIKE %s",
+            f"SELECT * FROM boardgames WHERE {field} LIKE %s",
             (f"%{q}%",)
         )
     else:
@@ -193,7 +193,7 @@ def video_games_list():
     cur = conn.cursor(dictionary=True)
     if q:
         cur.execute(
-            "SELECT * FROM videogames WHERE {field} LIKE %s",
+            f"SELECT * FROM videogames WHERE {field} LIKE %s",
             (f"%{q}%",)
         )
     else:
