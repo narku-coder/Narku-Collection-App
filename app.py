@@ -37,13 +37,21 @@ def index():
 @app.route("/books")
 def books_list():
     q = request.args.get("q", "").strip()
-    field = request.args.get("field", "title")
+    field = request.args.get("field", "title").strip()
+
+    # 2. SECURITY WHITELIST: Strictly define which columns are searchable.
+    # This prevents malicious users from injecting SQL commands via the dropdown.
+    ALLOWED_FIELDS = {'title', 'author', 'year_published', 'publisher'}
+    
+    # 3. Validation: If the requested field isn't in our list, force it back to 'title'
+    if field not in ALLOWED_FIELDS:
+        field = 'title'
     conn = get_connection()
     cur = conn.cursor(dictionary=True)
     if q:
         cur.execute(
-            "SELECT * FROM booktable WHERE title LIKE %s OR author LIKE %s",
-            (f"%{q}%", f"%{q}%")
+            "SELECT * FROM booktable WHERE {field} LIKE %s",
+            (f"%{q}%")
         )
     else:
         cur.execute("SELECT * FROM booktable")
@@ -76,13 +84,21 @@ def books_add():
 @app.route("/cds")
 def cds_list():
     q = request.args.get("q", "").strip()
-    field = request.args.get("field", "title")
+    field = request.args.get("field", "title").strip()
+    
+    # 2. SECURITY WHITELIST: Strictly define which columns are searchable.
+    # This prevents malicious users from injecting SQL commands via the dropdown.
+    ALLOWED_FIELDS = {'title', 'artist', 'year_released', 'label'}
+    
+    # 3. Validation: If the requested field isn't in our list, force it back to 'title'
+    if field not in ALLOWED_FIELDS:
+        field = 'title'
     conn = get_connection()
     cur = conn.cursor(dictionary=True)
     if q:
         cur.execute(
-            "SELECT * FROM cdtable WHERE title LIKE %s OR artist LIKE %s",
-            (f"%{q}%", f"%{q}%")
+            "SELECT * FROM cdtable WHERE {field} LIKE %s",
+            (f"%{q}%")
         )
     else:
         cur.execute("SELECT * FROM cdtable")
@@ -116,12 +132,21 @@ def cds_add():
 def board_games_list():
     q = request.args.get("q", "").strip()
     field = request.args.get("field", "title")
+
+    # 2. SECURITY WHITELIST: Strictly define which columns are searchable.
+    # This prevents malicious users from injecting SQL commands via the dropdown.
+    ALLOWED_FIELDS = {'title', 'company', 'year_released', 'category'}
+    
+    # 3. Validation: If the requested field isn't in our list, force it back to 'title'
+    if field not in ALLOWED_FIELDS:
+        field = 'title'
+        
     conn = get_connection()
     cur = conn.cursor(dictionary=True)
     if q:
         cur.execute(
-            "SELECT * FROM boardgames WHERE title LIKE %s OR company LIKE %s",
-            (f"%{q}%", f"%{q}%")
+            "SELECT * FROM boardgames WHERE {field} LIKE %s",
+            (f"%{q}%")
         )
     else:
         cur.execute("SELECT * FROM boardgames")
@@ -155,12 +180,21 @@ def board_games_add():
 def video_games_list():
     q = request.args.get("q", "").strip()
     field = request.args.get("field", "title")
+
+    # 2. SECURITY WHITELIST: Strictly define which columns are searchable.
+    # This prevents malicious users from injecting SQL commands via the dropdown.
+    ALLOWED_FIELDS = {'title', 'developer', 'year_released', 'genre'}
+    
+    # 3. Validation: If the requested field isn't in our list, force it back to 'title'
+    if field not in ALLOWED_FIELDS:
+        field = 'title'
+        
     conn = get_connection()
     cur = conn.cursor(dictionary=True)
     if q:
         cur.execute(
-            "SELECT * FROM videogames WHERE title LIKE %s OR developer LIKE %s",
-            (f"%{q}%", f"%{q}%")
+            "SELECT * FROM videogames WHERE {field} LIKE %s",
+            (f"%{q}%")
         )
     else:
         cur.execute("SELECT * FROM videogames")
