@@ -41,8 +41,8 @@ def books_list():
     cur = conn.cursor(dictionary=True)
     if q:
         cur.execute(
-            "SELECT * FROM booktable WHERE title LIKE %s",
-            (f"%{q}%",)
+            "SELECT * FROM booktable WHERE title LIKE %s OR author LIKE %s",
+            (f"%{q}%", f"%{q}%")
         )
     else:
         cur.execute("SELECT * FROM booktable")
@@ -117,8 +117,8 @@ def board_games_list():
     cur = conn.cursor(dictionary=True)
     if q:
         cur.execute(
-            "SELECT * FROM boardgames WHERE title LIKE %s",
-            (f"%{q}%",)
+            "SELECT * FROM boardgames WHERE title LIKE %s OR company LIKE %s",
+            (f"%{q}%", f"%{q}%")
         )
     else:
         cur.execute("SELECT * FROM boardgames")
@@ -155,8 +155,8 @@ def video_games_list():
     cur = conn.cursor(dictionary=True)
     if q:
         cur.execute(
-            "SELECT * FROM videogames WHERE title LIKE %s",
-            (f"%{q}%",)
+            "SELECT * FROM videogames WHERE title LIKE %s OR developer LIKE %s",
+            (f"%{q}%", f"%{q}%")
         )
     else:
         cur.execute("SELECT * FROM videogames")
@@ -212,8 +212,8 @@ def global_search():
     # Search books only or as part of "all"
     if scope in ("all", "books"):
         cur.execute(
-            "SELECT book_id, title, author FROM booktable WHERE title LIKE %s",
-            (f"%{q}%",)
+            "SELECT book_id, title, author FROM booktable WHERE title LIKE %s OR author LIKE %s",
+            (f"%{q}%", f"%{q}%")
         )
         books = cur.fetchall()
 
@@ -232,16 +232,16 @@ def global_search():
     # Search board games only or as part of "all"
     if scope in ("all", "board_games"):
         cur.execute(
-            "SELECT board_game_id, title, company FROM boardgames WHERE title LIKE %s",
-            (f"%{q}%",)
+            "SELECT board_game_id, title, company FROM boardgames WHERE title LIKE %s OR company LIKE %s",
+            (f"%{q}%", f"%{q}%")
         )
         board_games = cur.fetchall()
 
     # Search video games only or as part of "all"
     if scope in ("all", "video_games"):
         cur.execute(
-            "SELECT game_id, title, developer FROM videogames WHERE title LIKE %s",
-            (f"%{q}%",)
+            "SELECT game_id, title, developer FROM videogames WHERE title LIKE %s OR developer LIKE %s",
+            (f"%{q}%", f"%{q}%") 
         )
         video_games = cur.fetchall()
 
