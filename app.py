@@ -51,7 +51,7 @@ def books_list():
     if q:
         cur.execute(
             "SELECT * FROM booktable WHERE {field} LIKE %s",
-            (f"%{q}%")
+            (f"%{q}%",)
         )
     else:
         cur.execute("SELECT * FROM booktable")
@@ -98,7 +98,7 @@ def cds_list():
     if q:
         cur.execute(
             "SELECT * FROM cdtable WHERE {field} LIKE %s",
-            (f"%{q}%")
+            (f"%{q}%",)
         )
     else:
         cur.execute("SELECT * FROM cdtable")
@@ -146,7 +146,7 @@ def board_games_list():
     if q:
         cur.execute(
             "SELECT * FROM boardgames WHERE {field} LIKE %s",
-            (f"%{q}%")
+            (f"%{q}%",)
         )
     else:
         cur.execute("SELECT * FROM boardgames")
@@ -194,7 +194,7 @@ def video_games_list():
     if q:
         cur.execute(
             "SELECT * FROM videogames WHERE {field} LIKE %s",
-            (f"%{q}%")
+            (f"%{q}%",)
         )
     else:
         cur.execute("SELECT * FROM videogames")
