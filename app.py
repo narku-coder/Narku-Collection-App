@@ -37,6 +37,7 @@ def index():
 @app.route("/books")
 def books_list():
     q = request.args.get("q", "").strip()
+    field = request.args.get("field", "title")
     conn = get_connection()
     cur = conn.cursor(dictionary=True)
     if q:
@@ -49,7 +50,7 @@ def books_list():
     books = cur.fetchall()
     cur.close()
     conn.close()
-    return render_template("books_list.html", books=books, q=q)
+    return render_template("books_list.html", books=books, q=q, field=field)
 
 @app.route("/books/add", methods=["GET", "POST"])
 def books_add():
@@ -75,6 +76,7 @@ def books_add():
 @app.route("/cds")
 def cds_list():
     q = request.args.get("q", "").strip()
+    field = request.args.get("field", "title")
     conn = get_connection()
     cur = conn.cursor(dictionary=True)
     if q:
@@ -87,7 +89,7 @@ def cds_list():
     cds = cur.fetchall()
     cur.close()
     conn.close()
-    return render_template("cds_list.html", cds=cds, q=q)
+    return render_template("cds_list.html", cds=cds, q=q, field=field)
 
 @app.route("/cds/add", methods=["GET", "POST"])
 def cds_add():
@@ -113,6 +115,7 @@ def cds_add():
 @app.route("/boardGames")
 def board_games_list():
     q = request.args.get("q", "").strip()
+    field = request.args.get("field", "title")
     conn = get_connection()
     cur = conn.cursor(dictionary=True)
     if q:
@@ -125,7 +128,7 @@ def board_games_list():
     board_games = cur.fetchall()
     cur.close()
     conn.close()
-    return render_template("board_games_list.html", board_games=board_games, q=q)
+    return render_template("board_games_list.html", board_games=board_games, q=q, field=field)
 
 @app.route("/boardGames/add", methods=["GET", "POST"])
 def board_games_add():
@@ -151,6 +154,7 @@ def board_games_add():
 @app.route("/videoGames")
 def video_games_list():
     q = request.args.get("q", "").strip()
+    field = request.args.get("field", "title")
     conn = get_connection()
     cur = conn.cursor(dictionary=True)
     if q:
@@ -163,7 +167,7 @@ def video_games_list():
     video_games = cur.fetchall()
     cur.close()
     conn.close()
-    return render_template("video_games_list.html", video_games=video_games, q=q)
+    return render_template("video_games_list.html", video_games=video_games, q=q, field=field)
 
 @app.route("/videoGames/add", methods=["GET", "POST"])
 def video_games_add():
